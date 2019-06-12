@@ -1,17 +1,27 @@
 extends Control
 
 var player_words: Array = []
-var prompts: Array = ['a name', 'a noun', 'adverb', 'adject']
-var story: String = "Once upon a time someone called %s ate a %s flavoured sandwich which made him fell all %s inside. It was %s day."
+
+var current_story: Dictionary = {
+		"prompts": [],
+		"story": ""
+		}
 
 onready var PlayerText: LineEdit = $VBoxContainer/HBoxContainer/PlayerText
 onready var DisplayText: Label = $VBoxContainer/DisplayText
 onready var PlayerButtonLabel: Label = $VBoxContainer/HBoxContainer/PlayerButtonLabel
 
 func _ready() -> void:
+	set_current_story()
 	DisplayText.text = "Welcome to Loony Lips! We're going to tell a story and have a wonderful time!\n\n"
 	check_player_words_length()
 	PlayerText.grab_focus()
+
+
+func set_current_story() -> void:
+	var stories: Array = get_from_json("StoryBook.json")
+	randomize()
+	current_story = stories[randi() % stories.size()]
 
 
 func _on_PlayerText_text_entered(new_text: String) -> void:
@@ -33,7 +43,7 @@ func add_to_player_words() -> void:
 
 
 func is_story_done() -> bool:
-	return player_words.size() == prompts.size()
+	return player_words.size() == current_story.prompts.size()
 
 
 func check_player_words_length() -> void:
@@ -44,11 +54,23 @@ func check_player_words_length() -> void:
 
 
 func tell_story() -> void:
-	DisplayText.text = story % player_words
+	DisplayText.text = current_story.story % player_words
 
 
 func prompt_player() -> void:
-	DisplayText.text += "May I have " + prompts[player_words.size()] + " please?"
+	DisplayText.text += "May I have " + current_story.prompts[player_words.size()] + " please?"
+
+
+func get_from_json(filename: String) -> Array:
+	var file = File.new()
+	file.open(filename, File.READ)
+	
+	var text: String = file.get_as_text()
+	var data: Array = parse_json(text)
+	
+	file.close()
+	
+	return data
 
 
 func end_game() -> void:

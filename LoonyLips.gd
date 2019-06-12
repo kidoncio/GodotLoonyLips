@@ -1,11 +1,10 @@
 extends Control
 
 var player_words: Array = []
-
 var current_story: Dictionary = {
-		"prompts": [],
-		"story": ""
-		}
+	"prompts": [],
+	"story": ""
+}
 
 onready var PlayerText: LineEdit = $VBoxContainer/HBoxContainer/PlayerText
 onready var DisplayText: Label = $VBoxContainer/DisplayText

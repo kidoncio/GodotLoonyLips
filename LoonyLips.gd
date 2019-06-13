@@ -2,8 +2,13 @@ extends Control
 
 var player_words: Array = []
 var current_story: Dictionary = {
-	"prompts": [],
-	"story": ""
+	"prompts": [
+		"a name",
+		"a noun",
+		"adverb",
+		"adject"
+	],
+	"story": "Once upon a time someone called %s ate a %s flavoured sandwich which made him fell all %s inside. It was %s day."
 }
 
 onready var PlayerText: LineEdit = $VBoxContainer/HBoxContainer/PlayerText
@@ -18,7 +23,7 @@ func _ready() -> void:
 
 
 func set_current_story() -> void:
-	var stories: Array = get_from_json("StoryBook.json")
+	var stories: Array = get_from_json("res://StoryBook.json")
 	randomize()
 	current_story = stories[randi() % stories.size()]
 
@@ -58,6 +63,7 @@ func tell_story() -> void:
 
 func prompt_player() -> void:
 	DisplayText.text += "May I have " + current_story.prompts[player_words.size()] + " please?"
+	PlayerText.grab_focus()
 
 
 func get_from_json(filename: String) -> Array:

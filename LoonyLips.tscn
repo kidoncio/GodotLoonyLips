@@ -30,39 +30,39 @@ texture = ExtResource( 2 )
 expand = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 24.0
-margin_top = 24.0
-margin_right = -24.0
-margin_bottom = -24.0
-alignment = 2
+anchor_left = 0.037
+anchor_top = 0.062
+anchor_right = 0.962
+anchor_bottom = 0.872
+margin_left = 0.32
+margin_top = 0.479996
+margin_right = 0.319946
+margin_bottom = -17.1201
 
 [node name="DisplayText" type="Label" parent="VBoxContainer"]
-margin_top = 195.0
-margin_right = 592.0
-margin_bottom = 835.0
-rect_min_size = Vector2( 300, 640 )
+margin_right = 591.0
+margin_bottom = 700.0
+rect_min_size = Vector2( 300, 700 )
 custom_fonts/font = SubResource( 1 )
 text = "Placeholder Text"
 autowrap = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 839.0
-margin_right = 592.0
-margin_bottom = 912.0
+margin_top = 704.0
+margin_right = 591.0
+margin_bottom = 777.0
 custom_constants/separation = 12
-alignment = 2
+alignment = 1
 
 [node name="PlayerText" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
-margin_right = 426.0
+margin_right = 425.0
 margin_bottom = 73.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
 
 [node name="PlayerButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
-margin_left = 438.0
-margin_right = 511.0
+margin_left = 437.0
+margin_right = 510.0
 margin_bottom = 73.0
 rect_min_size = Vector2( 73, 73 )
 texture_normal = ExtResource( 4 )
@@ -70,9 +70,9 @@ texture_pressed = ExtResource( 5 )
 expand = true
 
 [node name="PlayerButtonLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_left = 523.0
+margin_left = 522.0
 margin_top = 5.0
-margin_right = 592.0
+margin_right = 591.0
 margin_bottom = 68.0
 custom_fonts/font = SubResource( 3 )
 text = "OK"
